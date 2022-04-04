@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title color="light">
+      Add contact
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addUser()">
+        <ion-icon slot="icon-only" name="person-add" size="large" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="component-content">
+<ion-accordion-group *ngFor="let contact of contactlist; let i = index">
+  <ion-accordion value="contact">
+    <ion-item slot="header">
+        <ion-item color=""> 
+              <ion-icon name="person" size="large" color="dark"></ion-icon>
+          <ion-label >{{ contact.name }}</ion-label>
+        </ion-item>
+    </ion-item>
+    <ion-list slot="content" >
+      <ion-item>
+        <ion-thumbnail slot="start">
+          </ion-thumbnail>
+          <ion-icon slot="end" (click)="showactionButtons()" name="settings"color="danger"></ion-icon>
+        <ion-label>{{ contact.number }}</ion-label>
+      </ion-item>
+      <ion-grid color="danger">
+        <ion-row class="ion-align-items-center">
+          <ion-col size="12" class="ion-text-center">
+            <ion-button (click)="message()">
+              <span>send message</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <p style="margin:10px;margin-left:50%"><ion-icon name="mail-unread-outline" color="warning" size="small"></ion-icon>Inbox</p>
+      <div class="box"><ion-icon name="chatbubble-ellipses-outline" size="large"></ion-icon>
+      <p *ngFor="let contact of sendmessage;">
+              <ion-label >{{contact.messages}}</ion-label>
+              
+      </p>
+      </div>
+    </ion-list>
+  </ion-accordion>
+  </ion-accordion-group>
